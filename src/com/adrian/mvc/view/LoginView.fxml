@@ -6,21 +6,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.adrian.mvc.controller.LoginController"
-            prefHeight="-Infinity" prefWidth="-Infinity">
+            prefHeight="-Infinity" prefWidth="-Infinity" stylesheets="res/styles/main.css">
     <top>
-        <Label text="Axon"></Label>
+        <ImageView>
+            <image>
+                <Image url="@../../../../res/icon.png"/>
+            </image>
+        </ImageView>
+        <Label text="Axon"/>
     </top>
     <center>
-        <VBox>
-            <children>
-                <Label text="User"></Label>
-                <TextField promptText="User"></TextField>
-                <Label text="Password"></Label>
-                <TextField promptText="Password"></TextField>
-            </children>
+        <VBox alignment="CENTER" maxWidth="200" spacing="5">
+            <Label text="User" maxWidth="150"/>
+            <TextField promptText="User"/>
+            <Label text="Password" maxWidth="150">
+                <padding>
+                    <Insets top="10"/>
+                </padding>
+            </Label>
+            <TextField promptText="Password"/>
+            <Button text="Log in"/>
+            <Hyperlink text="or Sign up..."/>
         </VBox>
     </center>
 </BorderPane>
