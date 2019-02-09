@@ -14,24 +14,25 @@
             fx:controller="com.adrian.mvc.controller.LoginController"
             prefHeight="-Infinity" prefWidth="-Infinity" stylesheets="res/styles/main.css">
     <top>
-        <ImageView>
-            <image>
-                <Image url="@../../../../res/icon.png"/>
-            </image>
-        </ImageView>
-        <Label text="Axon"/>
+        <FlowPane alignment="BASELINE_CENTER">
+            <padding><Insets top="50" bottom="50"/></padding>
+            <ImageView fx:id="icon"/>
+            <Label text="Axon" styleClass="title"/>
+        </FlowPane>
     </top>
     <center>
-        <VBox alignment="CENTER" maxWidth="200" spacing="5">
-            <Label text="User" maxWidth="150"/>
-            <TextField promptText="User"/>
-            <Label text="Password" maxWidth="150">
-                <padding>
-                    <Insets top="10"/>
-                </padding>
-            </Label>
+        <VBox alignment="TOP_CENTER" maxWidth="200" spacing="5">
+            <FlowPane hgap="5">
+                <ImageView fitWidth="16" fitHeight="16"><Image url="res/user_icon.png"/></ImageView>
+                <Label text="User" maxWidth="150"/>
+            </FlowPane>
+            <TextField promptText="User" fx:id="user"/>
+            <FlowPane hgap="5">
+                <ImageView fitWidth="16" fitHeight="16"><Image url="res/key_icon.png"/></ImageView>
+                <Label text="Password" maxWidth="150"/>
+            </FlowPane>
             <TextField promptText="Password"/>
-            <Button text="Log in"/>
+            <Button text="Log in" onAction="#send"/>
             <Hyperlink text="or Sign up..."/>
         </VBox>
     </center>
