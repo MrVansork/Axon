@@ -7,7 +7,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -36,21 +35,23 @@ public class Axon extends Application {
         WIDTH = 768;
         HEIGHT = 480;
 
+        popup = new Stage(StageStyle.TRANSPARENT);
+        popup.initOwner(stage);
+        popup.initModality(Modality.APPLICATION_MODAL);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mvc/view/LoginView.fxml"));
         scenes.put("login", new Scene(loader.load(), WIDTH, HEIGHT));
 
-        loader = new FXMLLoader(getClass().getResource("mvc/view/SignInView.fxml"));
-        scenes.put("signIn", new Scene(loader.load(), 400, 250));
+        loader = new FXMLLoader(getClass().getResource("mvc/view/SignUpView.fxml"));
+        scenes.put("signup", new Scene(loader.load(), 400, 250));
+
+        loader = new FXMLLoader(getClass().getResource("mvc/view/MainMenuView.fxml"));
+        scenes.put("mainMenu", new Scene(loader.load(), WIDTH, HEIGHT));
 
         //startConnection();
         stage.setScene(scenes.get("login"));
         stage.setTitle("Axon");
         stage.getIcons().addAll(Assets.getImage("APP_ICON"));
-
-        popup = new Stage(StageStyle.TRANSPARENT);
-        popup.initOwner(stage);
-        popup.initModality(Modality.APPLICATION_MODAL);
 
         stage.show();
     }

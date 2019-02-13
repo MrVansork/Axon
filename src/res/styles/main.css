@@ -40,3 +40,26 @@
     -fx-text-fill: #FFFFFF;
     -fx-border-color: #BBBBBB;
 }
+
+.menuButton{
+    -fx-background-color: #EEEEEE;
+    -fx-text-fill: #333333;
+    -fx-border-color: linear-gradient(from 0% 0% to 100% 100%, #000000, #FFFFFF);
+
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-border-width: 2;
+
+}
+
+.menuButton:hover{
+    -fx-background-color: #AAAAAA;
+    -fx-text-fill: #222222;
+    -fx-border-color: linear-gradient(from 0% 0% to 100% 100%, #111111, #FFFFFF);
+}
+
+.menuButton:pressed{
+    -fx-background-color: #333333;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: linear-gradient(from 0% 0% to 100% 100%, #BBBBBB, #000000);
+}

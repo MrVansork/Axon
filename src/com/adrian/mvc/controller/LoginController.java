@@ -32,8 +32,8 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    public void signIn(){
-        Axon.get().switchPopup("signIn");
+    public void signUp(){
+        Axon.get().switchPopup("signUp");
         Axon.get().applyGaussian();
         Axon.get().getPopup().show();
     }

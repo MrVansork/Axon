@@ -33,7 +33,7 @@
             </FlowPane>
             <TextField promptText="Password"/>
             <Button text="Log in" onAction="#send"/>
-            <Hyperlink text="or Sign up..." onAction="#signIn"/>
+            <Hyperlink text="or Sign up..." onAction="#signUp"/>
         </VBox>
     </center>
 </BorderPane>
