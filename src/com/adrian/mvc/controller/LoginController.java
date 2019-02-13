@@ -1,7 +1,7 @@
 package com.adrian.mvc.controller;
 
 import com.adrian.Axon;
-import com.adrian.util.Constants;
+import com.adrian.util.Assets;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -21,15 +21,21 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        icon.setImage(new Image(getClass().getResourceAsStream("/res/icon.png")));
+        icon.setImage(Assets.getImage("APP_ICON"));
         icon.setFitHeight(128);
         icon.setFitWidth(128);
     }
 
     @FXML
     public void send(){
-        String msg = user.getText();
-        user.setText("");
-        Axon.get().getClient().send(msg+"$");
+        Axon.get().switchScene("mainMenu");
     }
+
+    @FXML
+    public void signIn(){
+        Axon.get().switchPopup("signIn");
+        Axon.get().applyGaussian();
+        Axon.get().getPopup().show();
+    }
+
 }

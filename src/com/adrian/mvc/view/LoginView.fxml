@@ -23,17 +23,17 @@
     <center>
         <VBox alignment="TOP_CENTER" maxWidth="200" spacing="5">
             <FlowPane hgap="5">
-                <ImageView fitWidth="16" fitHeight="16"><Image url="res/user_icon.png"/></ImageView>
+                <ImageView fitWidth="16" fitHeight="16"><Image url="res/images/user_icon.png"/></ImageView>
                 <Label text="User" maxWidth="150"/>
             </FlowPane>
             <TextField promptText="User" fx:id="user"/>
             <FlowPane hgap="5">
-                <ImageView fitWidth="16" fitHeight="16"><Image url="res/key_icon.png"/></ImageView>
+                <ImageView fitWidth="16" fitHeight="16"><Image url="res/images/key_icon.png"/></ImageView>
                 <Label text="Password" maxWidth="150"/>
             </FlowPane>
             <TextField promptText="Password"/>
             <Button text="Log in" onAction="#send"/>
-            <Hyperlink text="or Sign up..."/>
+            <Hyperlink text="or Sign up..." onAction="#signIn"/>
         </VBox>
     </center>
 </BorderPane>

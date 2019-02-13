@@ -1,7 +1,8 @@
 package com.adrian.util;
 
-import java.io.InputStream;
-
 public class Constants {
-    public static final InputStream ICON_RESOURCE = Constants.class.getResourceAsStream("../../../res/icon.png");
+
+    public static final String IMAGES_FOLDER = "res/images/";
+    public static final String STYLES_FOLDER = "res/styles/";
+
 }

@@ -1,12 +1,16 @@
 package com.adrian;
 
 import com.adrian.net.Client;
+import com.adrian.util.Assets;
 import com.adrian.util.Log;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.HashMap;
 
@@ -29,19 +33,24 @@ public class Axon extends Application {
         singleton = this;
         this.stage = stage;
         Log.d(getClass().getName(), "started javaFX");
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("mvc/view/LoginView.fxml"));
         WIDTH = 768;
         HEIGHT = 480;
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mvc/view/LoginView.fxml"));
         scenes.put("login", new Scene(loader.load(), WIDTH, HEIGHT));
+
+        loader = new FXMLLoader(getClass().getResource("mvc/view/SignInView.fxml"));
+        scenes.put("signIn", new Scene(loader.load(), 400, 250));
 
         //startConnection();
         stage.setScene(scenes.get("login"));
         stage.setTitle("Axon");
-        stage.getIcons().addAll(new Image(getClass().getResourceAsStream("../../res/icon.png")));
+        stage.getIcons().addAll(Assets.getImage("APP_ICON"));
 
-        popup = new Stage();
+        popup = new Stage(StageStyle.TRANSPARENT);
         popup.initOwner(stage);
+        popup.initModality(Modality.APPLICATION_MODAL);
 
         stage.show();
     }
@@ -59,12 +68,20 @@ public class Axon extends Application {
         receive.start();
     }
 
+    public void applyGaussian(){
+        stage.getScene().getRoot().setEffect(new GaussianBlur(2));
+    }
+
+    public void disableGaussian(){
+        stage.getScene().getRoot().setEffect(null);
+    }
+
     public void switchPopup(String key){
         switchPopup(scenes.get(key));
     }
 
     public void switchPopup(Scene scene){
-        if(!popup.getScene().equals(scene) && scene != null){
+        if(scene != null){
             popup.setScene(scene);
         }
     }
@@ -74,7 +91,7 @@ public class Axon extends Application {
     }
 
     public void switchScene(Scene scene){
-        if(!stage.getScene().equals(scene) && scene != null){
+        if(scene != null){
             stage.setScene(scene);
         }
     }
@@ -83,7 +100,16 @@ public class Axon extends Application {
         return client;
     }
 
+    public Stage getStage() {
+        return stage;
+    }
+
+    public Stage getPopup() {
+        return popup;
+    }
+
     public static void main(String[] args) {
+        Assets.init();
         launch(args);
     }
 

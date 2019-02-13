@@ -2,11 +2,38 @@
 
 <?import java.lang.*?><?import java.util.*?><?import javafx.scene.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?><?import javafx.geometry.Insets?><?import javafx.scene.image.Image?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.adrian.mvc.controller.SignInController"
-    prefHeight="400.0" prefWidth="600.0">
+    prefHeight="400.0" prefWidth="600.0" stylesheets="res/styles/main.css" styleClass="popup">
     <top>
-        <Button text="X"/>
+        <FlowPane alignment="BOTTOM_CENTER">
+            <padding><Insets top="15"/></padding>
+            <Label text="mensaje de error de prueba" styleClass="errorLabel"/>
+        </FlowPane>
     </top>
-    
+    <center>
+        <GridPane alignment="CENTER" vgap="10" hgap="10">
+            <Label text="User" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <ImageView fitWidth="16" fitHeight="16" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
 
+            <Label text="Email" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <ImageView fitWidth="16" fitHeight="16" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+
+            <Label text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <PasswordField promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" onKeyPressed="#fieldsCheck"/>
+
+            <Label text="Repeat Pass." GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <PasswordField promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="3" onKeyPressed="#fieldsCheck"/>
+            <ImageView fitWidth="16" fitHeight="16" GridPane.columnIndex="2" GridPane.rowIndex="3" fx:id="passwd_2_check"/>
+        </GridPane>
+    </center>
+    <bottom>
+        <FlowPane alignment="CENTER" hgap="30">
+            <padding><Insets bottom="10"/></padding>
+            <Button text="Aceptar"/>
+            <Button text="Cancelar"/>
+        </FlowPane>
+    </bottom>
 </BorderPane>
