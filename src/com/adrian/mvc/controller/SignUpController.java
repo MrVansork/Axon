@@ -61,7 +61,7 @@ public class SignUpController implements Initializable {
 
     }
 
-    public void reset(){
+    private void reset(){
         error_label.setText("");
         user.clear();
         email.clear();

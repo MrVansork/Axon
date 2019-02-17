@@ -40,18 +40,18 @@ public class Axon extends Application {
         popup.initModality(Modality.APPLICATION_MODAL);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mvc/view/LoginView.fxml"));
-        scenes.put("login", new Scene(loader.load(), WIDTH, HEIGHT));
+        scenes.put("logIn", new Scene(loader.load(), WIDTH, HEIGHT));
 
         loader = new FXMLLoader(getClass().getResource("mvc/view/SignUpView.fxml"));
-        scenes.put("signup", new Scene(loader.load(), 400, 250));
+        scenes.put("signUp", new Scene(loader.load(), 400, 250));
 
         loader = new FXMLLoader(getClass().getResource("mvc/view/MainMenuView.fxml"));
         scenes.put("mainMenu", new Scene(loader.load(), WIDTH, HEIGHT));
 
         //startConnection();
-        stage.setScene(scenes.get("login"));
+        stage.setScene(scenes.get("logIn"));
         stage.setTitle("Axon");
-        stage.getIcons().addAll(Assets.getImage("APP_ICON"));
+        stage.getIcons().addAll(Assets.getImage("APP ICON"));
 
         stage.show();
     }

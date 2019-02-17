@@ -15,11 +15,15 @@ public class Assets {
         Log.i(Assets.class.getName(), "loading Assets...");
 
 
-        loadImage("APP_ICON", "../icon.png");
-        loadImage("FAILED_ICON", "failed_icon.png");
-        loadImage("TICK_ICON", "tick_icon.png");
-        loadImage("KEY_ICON", "key_icon.png");
-        loadImage("USER_ICON", "user_icon.png");
+        loadImage("APP ICON", "../icon.png");
+        loadImage("FAILED ICON", "failed_icon.png");
+        loadImage("TICK ICON", "tick_icon.png");
+        loadImage("KEY ICON", "key_icon.png");
+        loadImage("USER ICON", "user_icon.png");
+
+        loadImage("SIGN-OUT ICON", "sign-out-option.png");
+        loadImage("MAIL ICON", "mail.png");
+        loadImage("SETTINGS ICON", "settings.png");
 
         Log.i(Assets.class.getName(), "Assets loaded");
     }

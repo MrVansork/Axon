@@ -6,21 +6,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Insets?><?import javafx.scene.image.ImageView?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.adrian.mvc.controller.MainMenuController"
             prefHeight="-Infinity" prefWidth="-Infinity" stylesheets="res/styles/main.css">
+    <padding><Insets topRightBottomLeft="5"/></padding>
     <left>
         <VBox spacing="20">
             <padding><Insets left="20" top="20"/></padding>
-            <Button text="Crear Red" styleClass="menuButton"/>
-            <Button text="Entrenar Red" styleClass="menuButton"/>
-            <Button text="Importar Red" styleClass="menuButton"/>
-            <Button text="Descargar Red" styleClass="menuButton"/>
+            <Button text="Crear Red" styleClass="menuButton" prefWidth="200"/>
+            <Button text="Entrenar Red" styleClass="menuButton" prefWidth="200"/>
+            <Button text="Importar Red" styleClass="menuButton" prefWidth="200"/>
+            <Button text="Descargar Red" styleClass="menuButton" prefWidth="200"/>
         </VBox>
     </left>
     <right>
-
+        <GridPane prefWidth="250" maxHeight="100" alignment="TOP_RIGHT" vgap="10" hgap="10" styleClass="userPane">
+            <padding><Insets topRightBottomLeft="20"/></padding>
+            <FlowPane styleClass="avatar" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" GridPane.rowSpan="3">
+                <ImageView fx:id="avatar"/>
+            </FlowPane>
+            <Label text="MrVansork" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="3"/>
+            <Label text="Administrador" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.columnSpan="3"/>
+            <Button onAction="#messages" GridPane.columnIndex="2" GridPane.rowIndex="2" fx:id="messages_btn"/>
+            <Button onAction="#settings" GridPane.columnIndex="3" GridPane.rowIndex="2" fx:id="settings_btn"/>
+            <Button onAction="#signOut" GridPane.columnIndex="4" GridPane.rowIndex="2" fx:id="singout_btn"/>
+        </GridPane>
     </right>
 </BorderPane>

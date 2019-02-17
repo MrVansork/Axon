@@ -21,7 +21,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        icon.setImage(Assets.getImage("APP_ICON"));
+        icon.setImage(Assets.getImage("APP ICON"));
         icon.setFitHeight(128);
         icon.setFitWidth(128);
     }
