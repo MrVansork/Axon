@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?><?import java.util.*?><?import javafx.scene.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?><?import javafx.scene.shape.Sphere?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.adrian.mvc.controller.CreateNetController"
+    prefHeight="-Infinity" prefWidth="-Infinity" stylesheets="res/styles/main.css" spacing="5">
+    <padding><Insets topRightBottomLeft="5"/></padding>
+    <GridPane hgap="5" vgap="5" alignment="TOP_CENTER">
+        <Label text="Nombre" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField promptText="Nombre" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Descripción" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <TextArea prefWidth="250" prefHeight="48" GridPane.rowSpan="2" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+        <Label text="Tipo" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="types" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+
+        <Label text="Función" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+        <ComboBox fx:id="functions" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
+    </GridPane>
+    <HBox alignment="TOP_CENTER">
+        <VBox alignment="CENTER" prefWidth="128" fx:id="input_box">
+            <Label text="Input"/>
+            <FlowPane alignment="CENTER" hgap="5">
+                <padding><Insets topRightBottomLeft="5"/></padding>
+                <Button fx:id="plus_input"/>
+                <Button fx:id="minus_input"/>
+            </FlowPane>
+            <ScrollPane hbarPolicy="NEVER">
+                <VBox>
+                </VBox>
+            </ScrollPane>
+        </VBox>
+        <VBox alignment="CENTER" fx:id="hidden_box">
+            <Label text="Hidden"/>
+            <FlowPane alignment="CENTER" hgap="5">
+                <padding><Insets topRightBottomLeft="5"/></padding>
+                <Button fx:id="plus_hidden"/>
+                <Button fx:id="minus_hidden"/>
+            </FlowPane>
+            <ScrollPane>
+                <HBox>
+                </HBox>
+            </ScrollPane>
+        </VBox>
+        <VBox alignment="CENTER" prefWidth="128" fx:id="output_box">
+            <Label text="Output"/>
+            <FlowPane  alignment="CENTER" hgap="5">
+                <padding><Insets topRightBottomLeft="5"/></padding>
+                <Button fx:id="plus_output"/>
+                <Button fx:id="minus_output"/>
+            </FlowPane>
+            <ScrollPane hbarPolicy="NEVER">
+                <VBox>
+
+                </VBox>
+            </ScrollPane>
+        </VBox>
+    </HBox>
+
+
+</VBox>

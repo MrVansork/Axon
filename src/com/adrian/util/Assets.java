@@ -16,14 +16,17 @@ public class Assets {
 
 
         loadImage("APP ICON", "../icon.png");
-        loadImage("FAILED ICON", "failed_icon.png");
-        loadImage("TICK ICON", "tick_icon.png");
-        loadImage("KEY ICON", "key_icon.png");
-        loadImage("USER ICON", "user_icon.png");
-
+        loadImage("FAILED ICON", "remove-symbol.png");
+        loadImage("CORRECT ICON", "correct-symbol.png");
+        loadImage("LOCK ICON", "security.png");
+        loadImage("USER ICON", "user-shape.png");
         loadImage("SIGN-OUT ICON", "sign-out-option.png");
         loadImage("MAIL ICON", "mail.png");
+        loadImage("SENT-MAIL ICON", "sent-mail.png");
         loadImage("SETTINGS ICON", "settings.png");
+        loadImage("MINUS ICON", "minus-symbol.png");
+        loadImage("PLUS ICON", "plus-symbol.png");
+        loadImage("TRASH ICON", "trash.png");
 
         Log.i(Assets.class.getName(), "Assets loaded");
     }

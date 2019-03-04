@@ -39,6 +39,7 @@
 .menuButton{
     -fx-font-size: 18;
     -fx-font-weight: bold;
+    -fx-border-width: 0 0 5 0;
 }
 
 .avatar{
@@ -51,4 +52,20 @@
     -fx-background-color: #FFFFFF;
     -fx-border-color: #02111B;
     -fx-border-width: 2;
+}
+
+.combo-box{
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #041D2D;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+}
+
+
+.combo-box-base > .arrow-button > .arrow {
+    -fx-background-color: #0A67A3;
+    -fx-background-insets: 0 0 0 0;
+    -fx-padding: 2 4;
+    -fx-shape: "M 0 0 H 7 L 3.5 4 z";
 }
