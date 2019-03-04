@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +32,28 @@ public class MainMenuController implements Initializable {
         avatar.setImage(Assets.getImage("APP ICON"));
         avatar.setFitWidth(80);
         avatar.setFitHeight(80);
+
+
+    }
+
+    @FXML
+    private void createNet(){
+        Axon.get().switchScene("createNet");
+    }
+
+    @FXML
+    private void trainNet(){
+
+    }
+
+    @FXML
+    private void importNet(){
+
+    }
+
+    @FXML
+    private void downloadNet(){
+
     }
 
     @FXML
@@ -45,7 +68,7 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private void messages(){
-
+        Axon.get().switchScene("mail");
     }
 
 }

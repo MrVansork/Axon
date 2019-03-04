@@ -14,18 +14,18 @@
     <center>
         <GridPane alignment="CENTER" vgap="10" hgap="10">
             <Label text="User" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <TextField promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="user"/>
+            <TextField promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="user" onKeyPressed="#userCheck"/>
             <ImageView fitWidth="16" fitHeight="16" GridPane.columnIndex="2" GridPane.rowIndex="0" fx:id="user_check"/>
 
             <Label text="Email" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-            <TextField promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="email"/>
+            <TextField promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="email" onKeyPressed="#emailCheck"/>
             <ImageView fitWidth="16" fitHeight="16" GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="email_check"/>
 
             <Label text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-            <PasswordField promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" onKeyPressed="#fieldsCheck" fx:id="passwd_1"/>
+            <PasswordField promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" onKeyPressed="#passCheck" fx:id="passwd_1"/>
 
             <Label text="Repeat Pass." GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-            <PasswordField promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="3" onKeyPressed="#fieldsCheck" fx:id="passwd_2"/>
+            <PasswordField promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="3" onKeyPressed="#passCheck" fx:id="passwd_2"/>
             <ImageView fitWidth="16" fitHeight="16" GridPane.columnIndex="2" GridPane.rowIndex="3" fx:id="passwd_2_check"/>
         </GridPane>
     </center>

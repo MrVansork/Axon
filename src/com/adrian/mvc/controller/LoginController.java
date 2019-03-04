@@ -26,11 +26,18 @@ public class LoginController implements Initializable {
         icon.setFitWidth(128);
     }
 
+    /**
+     * Check the credentials and logIn if all is good switch to the Main Menu View
+     */
     @FXML
     public void send(){
+        //TODO: Check the user login
         Axon.get().switchScene("mainMenu");
     }
 
+    /**
+     * Switch to the signUp View
+     */
     @FXML
     public void signUp(){
         Axon.get().switchPopup("signUp");

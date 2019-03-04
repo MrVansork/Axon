@@ -15,10 +15,10 @@
     <left>
         <VBox spacing="20">
             <padding><Insets left="20" top="20"/></padding>
-            <Button text="Crear Red" styleClass="menuButton" prefWidth="200"/>
-            <Button text="Entrenar Red" styleClass="menuButton" prefWidth="200"/>
-            <Button text="Importar Red" styleClass="menuButton" prefWidth="200"/>
-            <Button text="Descargar Red" styleClass="menuButton" prefWidth="200"/>
+            <Button text="Crear Red" onAction="#createNet" styleClass="menuButton" prefWidth="200"/>
+            <Button text="Entrenar Red" onAction="#trainNet" styleClass="menuButton" prefWidth="200"/>
+            <Button text="Importar Red" onAction="#importNet" styleClass="menuButton" prefWidth="200"/>
+            <Button text="Descargar Red" onAction="#downloadNet" styleClass="menuButton" prefWidth="200"/>
         </VBox>
     </left>
     <right>
