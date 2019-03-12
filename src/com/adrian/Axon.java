@@ -4,18 +4,15 @@ import com.adrian.net.Client;
 import com.adrian.util.Assets;
 import com.adrian.util.Log;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import org.bson.Document;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Axon extends Application {
 
@@ -33,7 +30,7 @@ public class Axon extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        singleton = this;
+        /*singleton = this;
         this.stage = stage;
         Log.d(getClass().getName(), "started javaFX");
         WIDTH = 1024;
@@ -56,12 +53,42 @@ public class Axon extends Application {
             }
         });
 
-        //startConnection();
         stage.setScene(scenes.get("logIn"));
         stage.setTitle("Axon");
         stage.getIcons().addAll(Assets.getImage("APP ICON"));
 
-        stage.show();
+        stage.show();*/
+
+        Document user_sign = new Document("username", "MrVansork")
+                .append("pwd", "B00le")
+                .append("email", "test@test.com");
+
+        Document user_login = new Document("username", "MrVansork")
+                .append("pwd", "B00le");
+
+        startConnection();
+
+        Thread recv = new Thread(() -> {
+            Log.d("Client", "Waiting Message...");
+            while(true){
+
+                String txt = new String(client.receive());
+                Log.d("Client", "Received: "+txt);
+            }
+        });
+        recv.start();
+
+        Scanner input = new Scanner(System.in);
+        Thread send = new Thread(() -> {
+            while(true){
+                System.out.print("To send: ");
+                client.send(input.nextLine());
+            }
+        });
+        send.start();
+
+        client.send("@@LOGIN@@"+user_login.toJson());
+        client.send("@@SIGNUP@@"+user_sign.toJson());
     }
 
     private void loadView(String name, String key, double width, double height){
@@ -74,7 +101,7 @@ public class Axon extends Application {
     }
 
     private void startConnection(){
-        client = new Client("localhost", 8190);
+        client = new Client("localhost", 8192);
         running = true;
         Thread receive = new Thread(() -> {
             while (running) {

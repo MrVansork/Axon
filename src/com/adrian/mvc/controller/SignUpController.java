@@ -60,6 +60,7 @@ public class SignUpController implements Initializable {
 
     @FXML
     private void passCheck(KeyEvent e){
+        error_label.setText("Comprobar que no se meten caracteres raros\n;:-[]{}...etc");
         if(passwd_1.getText().equals(passwd_2.getText())){
             passwd_2_check.setImage(Assets.getImage("CORRECT ICON"));
         }else{

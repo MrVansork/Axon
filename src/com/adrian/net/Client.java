@@ -1,7 +1,5 @@
 package com.adrian.net;
 
-import com.adrian.util.Log;
-
 import java.io.*;
 import java.net.Socket;
 
@@ -10,6 +8,7 @@ public class Client {
     private int id;
     private int port;
     private String address;
+    private int len = 1024;
 
     private Socket socket;
     private DataInputStream in;
@@ -20,7 +19,7 @@ public class Client {
      * @param address of the serve
      * @param port of the server
      */
-    public Client( String address, int port) {
+    public Client(String address, int port) {
         this.address = address;
         this.port = port;
 
@@ -31,6 +30,13 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("1: "+new String(receive()));
+        //System.out.println("2: "+new String(receive()));
+
+        //id = Integer.parseInt(new String(receive()).split("@@ID@@")[1]);
+        //len = Integer.parseInt(new String(receive()).split("@@LEN@@")[1]);
+        //System.out.println(id+" - "+len);
     }
 
     /**
@@ -40,10 +46,8 @@ public class Client {
     public byte[] receive(){
         byte[] data = null;
         try {
-            int len = in.readInt();
-            data = new byte[len];
-            in.readFully(data);
-            Log.d(getClass().getName(), "Received "+len+" bytes of data");
+            data = new byte[7];
+            in.read(data);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -66,10 +70,8 @@ public class Client {
      */
     public void send(byte[] bytes, int offset, int length){
         try {
-            out.writeInt(length);
             out.write(bytes, offset, length);
             out.flush();
-            Log.d(getClass().getName(), "Sent "+length+" bytes of data");
         } catch (IOException e) {
             e.printStackTrace();
         }
