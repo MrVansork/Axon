@@ -8,11 +8,10 @@ public class Client {
     private int id;
     private int port;
     private String address;
-    private int len = 1024;
 
     private Socket socket;
-    private DataInputStream in;
-    private DataOutputStream out;
+    private BufferedReader in;
+    private BufferedWriter out;
 
     /**
      * Initialize the Socket and the in, out classes
@@ -25,64 +24,40 @@ public class Client {
 
         try {
             socket = new Socket(address, port);
-            in = new DataInputStream(socket.getInputStream());
-            out = new DataOutputStream(socket.getOutputStream());
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println("1: "+new String(receive()));
-        //System.out.println("2: "+new String(receive()));
-
-        //id = Integer.parseInt(new String(receive()).split("@@ID@@")[1]);
-        //len = Integer.parseInt(new String(receive()).split("@@LEN@@")[1]);
-        //System.out.println(id+" - "+len);
+        id = Integer.parseInt(receive().split("@@ID@@")[1]);
     }
 
     /**
-     * Receive data in bytes
-     * @return bytes received
+     * Receive data by string
+     * @return string received
      */
-    public byte[] receive(){
-        byte[] data = null;
+    public String receive(){
+        String result = null;
         try {
-            data = new byte[7];
-            in.read(data);
+            result = in.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return data;
+        return result;
     }
 
     /**
-     * Send data in bytes
-     * @param bytes to send
+     * Send data by string
+     * @param text string to send
      */
-    public void send(byte[] bytes){
-        send(bytes, 0, bytes.length);
-    }
-
-    /**
-     * Send data in bytes
-     * @param bytes to send
-     * @param offset of data in bytes
-     * @param length of bytes
-     */
-    public void send(byte[] bytes, int offset, int length){
+    public void send(String text){
         try {
-            out.write(bytes, offset, length);
+            out.write(text);
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Send a string
-     * @param string to send
-     */
-    public void send(String string){
-        send(string.getBytes(), 0, string.getBytes().length);
     }
 
     public int getPort() {

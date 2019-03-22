@@ -3,12 +3,17 @@ package com.adrian;
 import com.adrian.net.Client;
 import com.adrian.util.Assets;
 import com.adrian.util.Log;
+import com.adrian.util.Security;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.input.KeyCode;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.bson.Document;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -58,22 +63,36 @@ public class Axon extends Application {
         stage.getIcons().addAll(Assets.getImage("APP ICON"));
 
         stage.show();*/
-
-        Document user_sign = new Document("username", "MrVansork")
-                .append("pwd", "B00le")
-                .append("email", "test@test.com");
-
-        Document user_login = new Document("username", "MrVansork")
-                .append("pwd", "B00le");
+        Security.init();
+        Document user_login = new Document("username", "mrvansork_2")
+                .append("password", BCrypt.hashpw("B00le", BCrypt.gensalt()));
+                //.append("email", "adrian.blesa.moreno@gmail.com");
 
         startConnection();
 
         Thread recv = new Thread(() -> {
             Log.d("Client", "Waiting Message...");
             while(true){
-
-                String txt = new String(client.receive());
-                Log.d("Client", "Received: "+txt);
+                String txt = client.receive();
+                if(txt.startsWith("@@LOGIN@@")){
+                    if(txt.split("@@LOGIN@@")[1].equals("@@OK@@")){
+                        Log.d("Client", "Logged in!");
+                    }else if(txt.split("@@LOGIN@@")[1].equals("@@FAILED@@")){
+                        Log.d("Client", "Error: User or password incorrect!");
+                    }else{
+                        Log.d("Client", "??: "+txt);
+                    }
+                }else if(txt.startsWith("@@SIGNUP@@")){
+                    if(txt.split("@@SIGNUP@@")[1].equals("@@OK@@")){
+                        Log.d("Client", "Signed Up!");
+                    }else if(txt.split("@@SIGNUP@@")[1].equals("@@FAILED@@")){
+                        Log.d("Client", "Error: Username already exists!");
+                    }else{
+                        Log.d("Client", "??: "+txt);
+                    }
+                }else {
+                    Log.d("Client", "Received: "+txt);
+                }
             }
         });
         recv.start();
@@ -85,10 +104,10 @@ public class Axon extends Application {
                 client.send(input.nextLine());
             }
         });
-        send.start();
-
+        //send.start();
+        client.send("@@P_KEY@@"+new String(Security.getPublicKey().getEncoded()));
         client.send("@@LOGIN@@"+user_login.toJson());
-        client.send("@@SIGNUP@@"+user_sign.toJson());
+        //client.send("@@SIGNUP@@"+user_login.toJson());
     }
 
     private void loadView(String name, String key, double width, double height){
@@ -103,14 +122,6 @@ public class Axon extends Application {
     private void startConnection(){
         client = new Client("localhost", 8192);
         running = true;
-        Thread receive = new Thread(() -> {
-            while (running) {
-                byte[] data = client.receive();
-                String msg = new String(data);
-                System.out.println("Server: " + msg);
-            }
-        });
-        receive.start();
     }
 
     public void applyGaussian(){
