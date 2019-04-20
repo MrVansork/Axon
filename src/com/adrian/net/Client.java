@@ -60,6 +60,16 @@ public class Client {
         }
     }
 
+    public void quit(){
+        try {
+            out.close();
+            in.close();
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public int getPort() {
         return port;
     }

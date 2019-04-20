@@ -1,9 +1,9 @@
 package com.adrian;
 
 import com.adrian.net.Client;
+import com.adrian.net.ClientController;
 import com.adrian.util.Assets;
 import com.adrian.util.Log;
-import com.adrian.util.Security;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,12 +12,9 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.bson.Document;
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Axon extends Application {
 
@@ -35,12 +32,11 @@ public class Axon extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        /*singleton = this;
+        singleton = this;
         this.stage = stage;
         Log.d(getClass().getName(), "started javaFX");
         WIDTH = 1024;
         HEIGHT = 580;
-
         popup = new Stage(StageStyle.TRANSPARENT);
         popup.initOwner(stage);
         popup.initModality(Modality.APPLICATION_MODAL);
@@ -62,58 +58,19 @@ public class Axon extends Application {
         stage.setTitle("Axon");
         stage.getIcons().addAll(Assets.getImage("APP ICON"));
 
-        stage.show();*/
-        Security.init();
-        Document user_login = new Document("username", "mrvansork_2")
-                .append("password", BCrypt.hashpw("B00le", BCrypt.gensalt()));
-                //.append("email", "adrian.blesa.moreno@gmail.com");
-
         startConnection();
+        ClientController.getInstance().startReceiving();
+        stage.show();
 
-        Thread recv = new Thread(() -> {
-            Log.d("Client", "Waiting Message...");
-            while(true){
-                String txt = client.receive();
-                if(txt.startsWith("@@LOGIN@@")){
-                    if(txt.split("@@LOGIN@@")[1].equals("@@OK@@")){
-                        Log.d("Client", "Logged in!");
-                    }else if(txt.split("@@LOGIN@@")[1].equals("@@FAILED@@")){
-                        Log.d("Client", "Error: User or password incorrect!");
-                    }else{
-                        Log.d("Client", "??: "+txt);
-                    }
-                }else if(txt.startsWith("@@SIGNUP@@")){
-                    if(txt.split("@@SIGNUP@@")[1].equals("@@OK@@")){
-                        Log.d("Client", "Signed Up!");
-                    }else if(txt.split("@@SIGNUP@@")[1].equals("@@FAILED@@")){
-                        Log.d("Client", "Error: Username already exists!");
-                    }else{
-                        Log.d("Client", "??: "+txt);
-                    }
-                }else {
-                    Log.d("Client", "Received: "+txt);
-                }
-            }
-        });
-        recv.start();
-
-        Scanner input = new Scanner(System.in);
-        Thread send = new Thread(() -> {
-            while(true){
-                System.out.print("To send: ");
-                client.send(input.nextLine());
-            }
-        });
-        //send.start();
-        client.send("@@P_KEY@@"+new String(Security.getPublicKey().getEncoded()));
-        client.send("@@LOGIN@@"+user_login.toJson());
-        //client.send("@@SIGNUP@@"+user_login.toJson());
+        stage.setOnCloseRequest(e -> client.send("@@QUIT@@"));
     }
 
     private void loadView(String name, String key, double width, double height){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("mvc/view/"+name));
-            scenes.put(key, new Scene(loader.load(), width, height));
+            Scene scene =  new Scene(loader.load(), width, height);
+            scene.setUserData(loader);
+            scenes.put(key, scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -168,6 +125,14 @@ public class Axon extends Application {
 
     public Stage getPopup() {
         return popup;
+    }
+
+    public HashMap<String, Scene> getScenes() {
+        return scenes;
+    }
+
+    public Object getController(String scene){
+        return ((FXMLLoader)scenes.get(scene).getUserData()).getController();
     }
 
     public static void main(String[] args) {

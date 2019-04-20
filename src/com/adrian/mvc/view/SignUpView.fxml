@@ -8,7 +8,7 @@
     <top>
         <FlowPane alignment="BOTTOM_CENTER">
             <padding><Insets top="15"/></padding>
-            <Label text="mensaje de error de prueba" styleClass="errorLabel" fx:id="error_label"/>
+            <Label styleClass="errorLabel" fx:id="error_label"/>
         </FlowPane>
     </top>
     <center>
@@ -18,7 +18,7 @@
             <ImageView fitWidth="16" fitHeight="16" GridPane.columnIndex="2" GridPane.rowIndex="0" fx:id="user_check"/>
 
             <Label text="Email" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-            <TextField promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="email" onKeyPressed="#emailCheck"/>
+            <TextField promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="email" />
             <ImageView fitWidth="16" fitHeight="16" GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="email_check"/>
 
             <Label text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2"/>

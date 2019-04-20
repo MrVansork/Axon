@@ -19,6 +19,11 @@
     -fx-font-weight: bold;
 }
 
+.messageLabel{
+    -fx-text-fill: #1d6b10;
+    -fx-font-weight: bold;
+}
+
 .button{
     -fx-background-color: #0A67A3;
     -fx-text-fill: #F3FAFE;

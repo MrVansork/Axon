@@ -22,6 +22,8 @@
     </top>
     <center>
         <VBox alignment="TOP_CENTER" maxWidth="200" spacing="5">
+            <Label fx:id="error" styleClass="errorLabel"/>
+            <Label fx:id="message" styleClass="messageLabel"/>
             <FlowPane hgap="5">
                 <ImageView fitWidth="16" fitHeight="16"><Image url="res/images/user-shape.png"/></ImageView>
                 <Label text="User" maxWidth="150"/>
@@ -31,7 +33,7 @@
                 <ImageView fitWidth="16" fitHeight="16"><Image url="res/images/security.png"/></ImageView>
                 <Label text="Password" maxWidth="150"/>
             </FlowPane>
-            <TextField promptText="Password"/>
+            <PasswordField promptText="Password" fx:id="password" onAction="#send"/>
             <Button text="Log in" onAction="#send"/>
             <Hyperlink text="or Sign up..." onAction="#signUp"/>
         </VBox>
