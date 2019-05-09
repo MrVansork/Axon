@@ -27,6 +27,8 @@ public class Assets {
         loadImage("MINUS ICON", "minus-symbol.png");
         loadImage("PLUS ICON", "plus-symbol.png");
         loadImage("TRASH ICON", "trash.png");
+        loadImage("SPINNER ICON", "spinner-of-dots.png");
+        loadImage("BACK ICON", "reply.png");
 
         Log.i(Assets.class.getName(), "Assets loaded");
     }

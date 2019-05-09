@@ -5,6 +5,7 @@ import com.adrian.mvc.controller.LoginController;
 import com.adrian.mvc.controller.SignUpController;
 import com.adrian.util.Log;
 import javafx.application.Platform;
+import org.bson.Document;
 
 public class ClientController {
 
@@ -46,6 +47,10 @@ public class ClientController {
             }else{
                 Log.d("Client", "??: "+txt);
             }
+        }else if(txt.startsWith("@@NET_LIST@@")){
+            System.out.println(txt);
+            //Document document = Document.parse(txt.split("@@NET_LIST@@")[1]);
+            //System.out.println(document.get("name"));
         }else if(txt.equals("@@QUIT@@")){
             Axon.get().getClient().quit();
             return false;

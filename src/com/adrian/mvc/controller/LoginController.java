@@ -30,6 +30,9 @@ public class LoginController implements Initializable {
         icon.setImage(Assets.getImage("APP ICON"));
         icon.setFitHeight(128);
         icon.setFitWidth(128);
+        user.setText("mrvansork");
+        password.setText("B00le");
+
     }
 
     /**

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?><?import java.util.*?><?import javafx.scene.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.adrian.mvc.controller.ListNetController"
+    prefHeight="400.0" prefWidth="600.0" style="fx-background-color: #FF00FF">
+    <top>
+
+    </top>
+    <left>
+        <VBox fx:id="previews">
+        </VBox>
+    </left>
+    <right>
+        <VBox fx:id="details">
+            <Label text="Nombre"/>
+            <Label text="Descripcion"/>
+        </VBox>
+    </right>
+</BorderPane>

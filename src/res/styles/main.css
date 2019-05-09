@@ -9,7 +9,7 @@
 }
 
 .popup{
-    -fx-background-color: #F8FAFE;
+    -fx-background-color: #FFFFFF;
     -fx-border-color: #02111B;
     -fx-border-width: 2;
 }
@@ -67,6 +67,14 @@
     -fx-border-radius: 0;
 }
 
+.mailScene{
+    -fx-background-color: #FFFFFF;
+}
+
+.messagePane{
+    -fx-border-color: #EEEEEE;
+    -fx-border-width: 1 0 0 0;
+}
 
 .combo-box-base > .arrow-button > .arrow {
     -fx-background-color: #0A67A3;

@@ -2,15 +2,20 @@
 
 <?import java.lang.*?><?import java.util.*?><?import javafx.scene.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
 
-<?import javafx.scene.image.ImageView?><?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?><?import javafx.scene.image.Image?><?import javafx.geometry.Insets?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.adrian.mvc.controller.MailController"
-    prefHeight="-Infinity" prefWidth="-Infinity" stylesheets="res/styles/main.css">
+    prefHeight="-Infinity" prefWidth="-Infinity" stylesheets="res/styles/main.css" styleClass="mailScene">
     <top>
-        <FlowPane>
+        <FlowPane hgap="20">
+            <padding><Insets topRightBottomLeft="10"/></padding>
+            <Button fx:id="backToMain">
+            </Button>
             <CheckBox text="Seleccionar todos"/>
             <Button fx:id="removeSelected"/>
-            <ImageView><Image url="res/images/magnifying-glass.png"/></ImageView>
-            <TextField promptText="Buscar..."/>
+            <FlowPane>
+                <ImageView><Image url="res/images/magnifying-glass.png"/></ImageView>
+                <TextField promptText="Buscar..."/>
+            </FlowPane>
             <Button fx:id="newMail"/>
         </FlowPane>
     </top>

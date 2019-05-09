@@ -7,6 +7,7 @@ import com.adrian.util.Log;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
@@ -42,7 +43,8 @@ public class Axon extends Application {
         popup.initModality(Modality.APPLICATION_MODAL);
 
         loadView("LoginView.fxml", "logIn", WIDTH, HEIGHT);
-        loadView("signupview.fxml", "signUp", 400, 250);
+        loadView("SignUpView.fxml", "signUp", 400, 250);
+        loadView("ListNetView.fxml", "listNet", 600, 400);
         loadView("MainMenuView.fxml", "mainMenu", WIDTH, HEIGHT);
         loadView("CreateNetView.fxml", "createNet", WIDTH, HEIGHT);
         loadView("MailView.fxml", "mail", WIDTH, HEIGHT);
@@ -82,7 +84,10 @@ public class Axon extends Application {
     }
 
     public void applyGaussian(){
-        stage.getScene().getRoot().setEffect(new GaussianBlur(2));
+        GaussianBlur blur = new GaussianBlur(2);
+        ColorAdjust colorAdjust = new ColorAdjust(0, -0.3, -0.5, 0);
+        colorAdjust.setInput(blur);
+        stage.getScene().getRoot().setEffect(colorAdjust);
     }
 
     public void disableGaussian(){

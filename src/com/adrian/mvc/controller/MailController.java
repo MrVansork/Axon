@@ -3,7 +3,9 @@ package com.adrian.mvc.controller;
 import com.adrian.util.Assets;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -24,12 +26,15 @@ public class MailController implements Initializable {
     private Button search;
     @FXML
     private Button removeSelected;
-
+    @FXML
+    private Button backToMain;
     @FXML
     private VBox messages;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        backToMain.setGraphic(new ImageView(Assets.getImage("BACK ICON")));
+
         newMail.setGraphic(new ImageView(Assets.getImage("SENT-MAIL ICON")));
         newMail.setText("NUEVO");
 
@@ -49,13 +54,18 @@ public class MailController implements Initializable {
 
     private HBox getMessagePane(){
         HBox result = new HBox();
+        result.getStyleClass().add("messagePane");
 
+        result.setPadding(new Insets(5));
+        result.setSpacing(12);
 
+        CheckBox selected = new CheckBox("");
         Label user = new Label("Usuario Prueba");
+        user.setStyle("-fx-font-weight: bold;");
         Label subject = new Label("Mensaje de prueba para ti");
         Label datetime = new Label("12:50");
 
-        result.getChildren().addAll(user, subject, datetime);
+        result.getChildren().addAll(selected, user, subject, datetime);
 
         return result;
     }
