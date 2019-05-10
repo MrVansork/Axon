@@ -76,6 +76,20 @@
     -fx-border-width: 1 0 0 0;
 }
 
+.messagePane:hover{
+    -fx-background-color: #FAFAFA;
+}
+
+.messagePaneSelected{
+    -fx-border-color: #cddde8;
+    -fx-border-width: 1 0 0 0;
+    -fx-background-color: #d4ecfc;
+}
+
+.messagePaneSelected:hover{
+    -fx-background-color: #c3e1f6;
+}
+
 .combo-box-base > .arrow-button > .arrow {
     -fx-background-color: #0A67A3;
     -fx-background-insets: 0 0 0 0;

@@ -33,8 +33,6 @@ public class MainMenuController implements Initializable {
         avatar.setImage(Assets.getImage("APP ICON"));
         avatar.setFitWidth(80);
         avatar.setFitHeight(80);
-
-
     }
 
     @FXML

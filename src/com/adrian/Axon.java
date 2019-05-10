@@ -56,15 +56,34 @@ public class Axon extends Application {
             }
         });
 
-        stage.setScene(scenes.get("logIn"));
+        scenes.get("listNet").setOnKeyPressed(e ->{
+            if(e.getCode() == KeyCode.ESCAPE){
+                disableGaussian();
+                popup.close();
+            }
+        });
+
+        scenes.get("createNet").setOnKeyPressed(e ->{
+            if(e.getCode() == KeyCode.ESCAPE){
+                switchScene("mainMenu");
+            }
+        });
+
+        scenes.get("mail").setOnKeyPressed(e ->{
+            if(e.getCode() == KeyCode.ESCAPE){
+                switchScene("mainMenu");
+            }
+        });
+
+        stage.setScene(scenes.get("mainMenu"));
         stage.setTitle("Axon");
         stage.getIcons().addAll(Assets.getImage("APP ICON"));
 
-        startConnection();
-        ClientController.getInstance().startReceiving();
+        //startConnection();
+        //ClientController.getInstance().startReceiving();
         stage.show();
 
-        stage.setOnCloseRequest(e -> client.send("@@QUIT@@"));
+        //stage.setOnCloseRequest(e -> client.send("@@QUIT@@"));
     }
 
     private void loadView(String name, String key, double width, double height){

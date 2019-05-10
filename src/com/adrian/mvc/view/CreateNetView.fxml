@@ -13,11 +13,8 @@
         <Label text="Descripción" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
         <TextArea prefWidth="250" prefHeight="48" GridPane.rowSpan="2" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
 
-        <Label text="Tipo" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
-        <ComboBox fx:id="types" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
-
-        <Label text="Función" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
-        <ComboBox fx:id="functions" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
+        <Label text="Función" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="functions" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
     </GridPane>
     <HBox alignment="TOP_CENTER">
         <VBox alignment="CENTER" prefWidth="128" fx:id="input_box">

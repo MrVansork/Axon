@@ -8,13 +8,13 @@
     <top>
         <FlowPane hgap="20">
             <padding><Insets topRightBottomLeft="10"/></padding>
-            <Button fx:id="backToMain">
+            <Button fx:id="backToMain" onAction="#back">
             </Button>
-            <CheckBox text="Seleccionar todos"/>
+            <CheckBox text="Seleccionar todos" fx:id="selectAll"/>
             <Button fx:id="removeSelected"/>
             <FlowPane>
                 <ImageView><Image url="res/images/magnifying-glass.png"/></ImageView>
-                <TextField promptText="Buscar..."/>
+                <TextField promptText="Buscar..." fx:id="search_text"/>
             </FlowPane>
             <Button fx:id="newMail"/>
         </FlowPane>

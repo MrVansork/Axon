@@ -37,8 +37,6 @@ public class CreateNetController implements Initializable {
     private VBox output_box;
 
     @FXML
-    private ComboBox<String> types;
-    @FXML
     private ComboBox<String> functions;
 
     @Override
@@ -50,8 +48,7 @@ public class CreateNetController implements Initializable {
         minus_hidden.setGraphic(new ImageView(Assets.getImage("MINUS ICON")));
         minus_output.setGraphic(new ImageView(Assets.getImage("MINUS ICON")));
 
-        types.setItems(FXCollections.observableArrayList("Numeros", "Imagenes", "Texto", "Sonido"));
-        functions.setItems(FXCollections.observableArrayList("Sigmoide", "Linear"));
+        functions.setItems(FXCollections.observableArrayList("Sigmoide", "ReLU"));
 
         plus_input.setOnAction(e->{
 
