@@ -3,6 +3,8 @@ package com.adrian.net;
 import com.adrian.Axon;
 import com.adrian.mvc.controller.LoginController;
 import com.adrian.mvc.controller.SignUpController;
+import com.adrian.mvc.model.NeuralNet;
+import com.adrian.mvc.model.User;
 import com.adrian.util.Log;
 import javafx.application.Platform;
 import org.bson.Document;
@@ -47,10 +49,17 @@ public class ClientController {
             }else{
                 Log.d("Client", "??: "+txt);
             }
-        }else if(txt.startsWith("@@NET_LIST@@")){
-            System.out.println(txt);
-            //Document document = Document.parse(txt.split("@@NET_LIST@@")[1]);
-            //System.out.println(document.get("name"));
+        }else if(txt.startsWith("@@CLEAR_NETS@@"))
+            NeuralNet.getNets().clear();
+        else if(txt.startsWith("@@NET@@")){
+            Document document = Document.parse(txt.split("@@NET@@")[1]);
+            NeuralNet.getNets().add(new NeuralNet(
+                    document.getInteger("id"),
+                    document.getString("name"),
+                    document.getString("description"),
+                    document.getDate("date").toString(),
+                    new User(document.getString("owner"))
+            ));
         }else if(txt.equals("@@QUIT@@")){
             Axon.get().getClient().quit();
             return false;

@@ -42,6 +42,7 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private void trainNet(){
+        ((ListNetController)Axon.get().getController("listNet")).init(ListNetController.Mode.TRAIN);
         Axon.get().switchPopup("listNet");
         Axon.get().applyGaussian();
         Axon.get().getPopup().show();
@@ -62,7 +63,10 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private void downloadNet(){
-
+        ((ListNetController)Axon.get().getController("listNet")).init(ListNetController.Mode.EXPORT);
+        Axon.get().switchPopup("listNet");
+        Axon.get().applyGaussian();
+        Axon.get().getPopup().show();
     }
 
     @FXML

@@ -2,19 +2,44 @@
 
 <?import java.lang.*?><?import java.util.*?><?import javafx.scene.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
 
+<?import javafx.geometry.Insets?><?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.adrian.mvc.controller.ListNetController"
-    prefHeight="400.0" prefWidth="600.0" style="fx-background-color: #FF00FF">
+    prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF" stylesheets="res/styles/main.css">
+    <padding>
+        <Insets topRightBottomLeft="25"/>
+    </padding>
     <top>
 
     </top>
     <left>
-        <VBox fx:id="previews">
+        <VBox fx:id="previews" prefWidth="250">
         </VBox>
     </left>
     <right>
-        <VBox fx:id="details">
-            <Label text="Nombre"/>
-            <Label text="Descripcion"/>
-        </VBox>
+        <BorderPane prefWidth="250" >
+            <padding>
+                <Insets topRightBottomLeft="16"/>
+            </padding>
+            <top>
+                <VBox fx:id="details" alignment="BASELINE_LEFT" spacing="10">
+                    <Label fx:id="nombre" styleClass="title" style="-fx-font-size: 24;"/>
+                    <Text fx:id="descripcion"/>
+                    <BorderPane>
+                        <left>
+                            <Label fx:id="creador"/>
+                        </left>
+                        <right>
+                            <Label fx:id="fecha"/>
+                        </right>
+                    </BorderPane>
+                </VBox>
+            </top>
+            <bottom>
+                <HBox spacing="30">
+                    <Button fx:id="accion"/>
+                    <Button text="Cancelar" onAction="#close"/>
+                </HBox>
+            </bottom>
+        </BorderPane>
     </right>
 </BorderPane>

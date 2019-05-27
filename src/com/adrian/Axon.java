@@ -26,7 +26,6 @@ public class Axon extends Application {
     private static double WIDTH, HEIGHT;
 
     private Client client;
-    private boolean running;
 
     private Stage stage;
     private Stage popup;
@@ -43,7 +42,7 @@ public class Axon extends Application {
         popup.initModality(Modality.APPLICATION_MODAL);
 
         loadView("LoginView.fxml", "logIn", WIDTH, HEIGHT);
-        loadView("SignUpView.fxml", "signUp", 400, 250);
+        loadView("SignUpView.fxml", "signUp", 400, 190);
         loadView("ListNetView.fxml", "listNet", 600, 400);
         loadView("MainMenuView.fxml", "mainMenu", WIDTH, HEIGHT);
         loadView("CreateNetView.fxml", "createNet", WIDTH, HEIGHT);
@@ -99,7 +98,6 @@ public class Axon extends Application {
 
     private void startConnection(){
         client = new Client("localhost", 8192);
-        running = true;
     }
 
     public void applyGaussian(){

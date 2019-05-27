@@ -77,6 +77,10 @@
 }
 
 .messagePane:hover{
+    -fx-background-color: #F0F0F0;
+}
+
+.messagePane:pressed{
     -fx-background-color: #FAFAFA;
 }
 

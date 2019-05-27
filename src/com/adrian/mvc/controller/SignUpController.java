@@ -23,16 +23,12 @@ public class SignUpController implements Initializable {
     @FXML
     private TextField user;
     @FXML
-    private TextField email;
-    @FXML
     private PasswordField passwd_1;
     @FXML
     private PasswordField passwd_2;
 
     @FXML
     private ImageView user_check;
-    @FXML
-    private ImageView email_check;
     @FXML
     private ImageView passwd_2_check;
 
@@ -58,16 +54,6 @@ public class SignUpController implements Initializable {
         }
     }
 
-    private void emailCheck(){
-        if(email.getText().contains("@") && !email.getText().split("@")[1].isEmpty()){
-            email_check.setImage(Assets.getImage("CORRECT ICON"));
-            correct = correct && true;
-        }else{
-            correct = false;
-            email_check.setImage(Assets.getImage("FAILED ICON"));
-        }
-    }
-
     @FXML
     private void passCheck(KeyEvent e){
         String letter = e.getText();
@@ -90,7 +76,6 @@ public class SignUpController implements Initializable {
     private void accept(){
         if(correct){
             Document doc = new Document().append("username", user.getText())
-                    .append("email", email.getText())
                     .append("password", passwd_1.getText());
 
             Axon.get().getClient().send("@@SIGNUP@@"+doc.toJson());
@@ -113,11 +98,9 @@ public class SignUpController implements Initializable {
     private void reset(){
         error_label.setText("");
         user.clear();
-        email.clear();
         passwd_1.clear();
         passwd_2.clear();
         user_check.setImage(null);
-        email_check.setImage(null);
         passwd_2_check.setImage(null);
     }
 
